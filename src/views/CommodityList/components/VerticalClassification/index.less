@@ -1,0 +1,43 @@
+/**变量 */
+@lineHight: 40px;
+
+.wrapBox {
+  & > div {
+    border: 1px solid @greyFont;
+    border-bottom: 0;
+    width: 168px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    user-select: none;
+    & > div {
+      height: @lineHight;
+      line-height: @lineHight;
+      border-bottom: 1px solid @greyFont;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      color: @greyFont;
+      padding: 10px 0 10px 15px;
+      /deep/ img {
+        vertical-align: unset;
+      }
+      & > span {
+        margin-left: 10px;
+      }
+    }
+    .title {
+      font-weight: bold;
+      color: @blackFont;
+      padding-left: 20px;
+      & > span {
+        margin-right: 10px;
+      }
+      & > .close {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .selectIndex {
+    color: @themeColor;
+  }
+}

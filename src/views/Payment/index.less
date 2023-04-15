@@ -1,0 +1,94 @@
+/**变量 */
+@both_sides : 34px; //padding两侧
+@title_both_sides: 18px; //title两侧
+@item_left : (@both_sides + @title_both_sides); //item左侧
+
+.fontSize30 {
+  font-size: 30px;
+}
+.marginBottom50 {
+  margin-bottom: 40px;
+}
+.selectedColor {
+  color: @selectColor;
+}
+.pay_tips {
+  display: flex;
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+  line-height: 30px;
+  padding: 70px 0;
+  & > div:first-child {
+    padding: 0 80px;
+  }
+}
+.row_title {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  padding: 0 @both_sides;
+  line-height: 42px;
+  margin: 20px 0;
+
+  & > div {
+    background: #fff;
+    z-index: 2;
+    padding: 0 @title_both_sides;
+    box-shadow: 0 0 1px 2px rgba(255, 255, 255, 0.75);
+  }
+
+  & > div:nth-child(2) {
+    width: 170px;
+    border: 1px solid @greyFont;
+    text-align: center;
+
+    & > div {
+      display: inline-block;
+      height: 14px;
+      margin: 0 10px;
+      filter: invert(46%) sepia(56%) saturate(5040%) hue-rotate(318deg)
+        brightness(102%) contrast(94%);
+    }
+  }
+}
+.row_title:after {
+  content: "";
+  position: absolute;
+  border-top: 1px solid @greyFont;
+  top: 50%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+.row_btn_box {
+  display: flex;
+  font-size: 24px;
+  & > div {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 270px;
+    height: 100px;
+    border: 1px solid @greyFont;
+    margin: 0 60px 0 @item_left;
+
+    & > div {
+      height: 52px;
+      margin-right: 25px;
+    }
+  }
+}
+.row_qrCode_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  text-align: right;
+  padding: 50px 0;
+  & > div {
+    margin-right: 64px;
+  }
+}

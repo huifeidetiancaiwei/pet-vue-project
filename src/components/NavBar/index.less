@@ -1,0 +1,31 @@
+//pic样式
+.pic {
+    height: 14px;
+    display: inline-block;
+    margin: 0 5px 0;
+  }
+  .trans_color {
+    filter: invert(88%) sepia(87%) saturate(7326%) hue-rotate(300deg)
+      brightness(104%) contrast(113%);
+  }
+  
+  .bgcolor {
+    background: #efefef;
+  }
+  .navBox {
+    height: 39px;
+    line-height: 39px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #dddddd;
+    & > div {
+      & > * {
+        margin: 0 5px 0;
+        user-select: none;
+        cursor: pointer;
+      }
+    }
+  }
+  .select {
+    color: @selectColor;
+  }

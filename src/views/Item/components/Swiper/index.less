@@ -1,0 +1,57 @@
+//图片样式
+.pic-box {
+    height: inherit;
+    /deep/img {
+      width: 100%;
+    }
+  }
+  .wrapBox {
+    height: inherit;
+    // .swiper:last-child {
+    //   // margin: 0 -28px;
+    // }
+  }
+  .swiper {
+    &.gallery-top {
+      height: 80%;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    &.gallery-thumbs {
+      height: 20%;
+      box-sizing: border-box;
+      // padding: 10px 0;
+    }
+    &.gallery-thumbs .swiper-slide {
+      // width: 33%;
+      height: 100%;
+      opacity: 0.4;
+      border: 1px solid @greyFont;
+    }
+    &.gallery-thumbs .swiper-slide-active {
+      opacity: 1;
+    }
+  }
+  .my_slide_box {
+    position: relative;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    border: 1px solid @greyFont;
+    background-color: #fff;
+    height: 100%;
+    // transform: translateY(-25%);
+    // margin-top: -20px;
+    box-sizing: border-box;
+    background-size: inherit;
+    top: 0;
+    margin: 0;
+  }
+  .swiper-button-prev {
+    left: -28px;
+    background-image: url("../../../../assets/images/left_arrow.png");
+  }
+  .swiper-button-next {
+    right: -28px;
+    background-image: url("../../../../assets/images/right_arrow.png");
+  }

@@ -1,0 +1,79 @@
+/**变量 */
+@m_right: 24px; //右侧距离
+@m_left : 100px; //左侧距离
+
+.wrapBox {
+  position: relative;
+  padding : 48px 0 48px 32px;
+
+  &>.content {
+    padding-left : @m_left;
+    padding-right: @m_right;
+    &>p:first-child {
+      padding-bottom: 20px;
+    }
+    &>p:nth-child(2) {
+      line-break: anywhere;
+    }
+
+    //pic
+    &>.pic_box {
+      display     : inline-block;
+      height      : 88px;
+      width       : 88px;
+      margin-right: 10px;
+      margin-top  : 5px;
+      &>div{
+        width: inherit;
+        /deep/ img {
+          width: inherit;
+        }
+      }
+    }
+
+    //详情盒子
+    &>.show_pic {
+      margin-top: 20px;
+      /deep/ img {
+        max-height: 400px;
+        max-width : 400px;
+      }
+    }
+
+    //鼠标放大缩小
+    .zoom_in {
+      cursor: zoom-in;
+    }
+
+    .zoom_out {
+      cursor: zoom-out;
+    }
+
+    //日期
+    &>p:last-child {
+      text-align: right;
+    }
+  }
+}
+
+//用户头像
+.avatar {
+  height  : 60px;
+  position: absolute;
+  padding : 0 ((@m_left - 60)/2);
+}
+
+//评星
+.star_wrap {
+  position: absolute;
+  right   : @m_right;
+  top     : 48px;
+
+  &>div {
+    height: 20px;
+
+    /deep/ &>div {
+      height: inherit;
+    }
+  }
+}

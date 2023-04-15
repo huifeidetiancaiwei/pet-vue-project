@@ -1,0 +1,59 @@
+.row_option {
+	&>div {
+		line-height: 50px;
+		.boxSetting;
+		border-top: 1px dashed @greyFont;
+
+		&>.keyName,
+		&>span:last-child {
+			color: @greyFont;
+		}
+
+		&>.rowShowMore {
+			margin-right   : 100px;
+			display        : inline-block;
+		}
+
+		&>.rowShowMore:after {
+			content            : ' ';
+			display            : inline-block;
+			height             : 10px;
+			width              : 11px;
+			background-image   : url('../../../../assets/images/down_arrow.png');
+			background-repeat  : no-repeat;
+			background-position: center;
+		}
+
+		&>.rowShowClose:after {
+			transform: rotate(180deg);
+		}
+
+		//选项盒子
+		&>div {
+			text-align: left;
+			flex      : 1;
+
+			//选项
+			&>span {
+				padding: 5px 10px;
+				margin : 0 10px 0;
+			}
+		}
+	}
+
+	&>div:first-child {
+		border: 0;
+	}
+}
+
+.row_select {
+	color        : #fff;
+	background   : @selectColor;
+	border-radius: 10px;
+}
+
+.row_select::after {
+	content  : "X";
+	display  : inline-block;
+	transform: scale(0.6) translateX(2px);
+}

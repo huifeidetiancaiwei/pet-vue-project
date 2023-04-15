@@ -1,0 +1,40 @@
+.item_box {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100px;
+    & > .item_title {
+      width: 268px;
+      text-align: left;
+    }
+    & > .item_price {
+      font-size: 26px;
+      width: 290px;
+      text-align: left;
+    }
+    //删除按钮
+    & > div:last-child {
+      margin-right: 30px;
+    }
+  }
+  .input_box {
+    border: 1px solid @greyFont;
+    margin: 0 80px;
+  
+    span {
+      display: inline-block;
+      width: 10px;
+      background-color: #eee;
+      width: 20px;
+    }
+    & > span:first-child {
+      border-right: 1px solid @greyFont;
+    }
+    & > span:last-child {
+      border-left: 1px solid @greyFont;
+    }
+    input {
+      text-align: center;
+      width: 56px;
+    }
+  }

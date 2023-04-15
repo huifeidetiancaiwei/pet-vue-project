@@ -1,0 +1,31 @@
+.wrapBox {
+    margin-top: 50px;
+    width: 192px;
+    cursor: pointer;
+    user-select: none;
+    //pic盒子
+    & > div:first-child {
+      height: 176px;
+    }
+    & > div:nth-child(2) {
+      font-size: 14px;
+      text-align: left;
+      line-height: 24px;
+      height: 44px;
+      overflow: hidden;
+      margin: 10px 0;
+      &>p{
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        word-break:break-all;
+      }
+    }
+    & > div:last-child {
+      font-size: 18px;
+      color: @selectColor;
+      text-align: left;
+      line-height: 30px;
+    }
+  }

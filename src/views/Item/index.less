@@ -1,0 +1,426 @@
+.top {
+	display: flex;
+	margin-bottom: 56px;
+
+	.top_left {
+		height: 400px;
+		width: 400px;
+	}
+
+	.top_right {
+		flex: 1;
+		margin-left: 88px;
+		text-align: left;
+
+		//头部商品名
+		& > div:first-child {
+			//商品名
+			& > p:first-child {
+				font-size: 24px;
+				margin-bottom: 15px;
+			}
+
+			//宣传语
+			& > p:nth-child(2) {
+				font-size: 20px;
+				color: @selectColor;
+				margin-bottom: 20px;
+			}
+
+			//价格
+			& > p:nth-child(3) {
+				margin-bottom: 15px;
+
+				& > span {
+					color: @selectColor;
+					font-size: 38px;
+
+					& > span {
+						font-size: 24px;
+					}
+				}
+			}
+
+			//促销
+			& > p:nth-child(4) {
+				& > span {
+					margin-right: 10px;
+				}
+
+				//促销
+				& > span:nth-child(1) {
+					background: @selectColor;
+					color: #fff;
+					padding: 2px 5px;
+				}
+
+				//周三“狠减单”!
+				& > span:nth-child(2) {
+				}
+
+				//点击参与
+				& > span:nth-child(3) {
+					color: @selectColor;
+				}
+			}
+		}
+
+		//第二行统计
+		& > div:nth-child(2) {
+			border-top: 1px dashed @greyFont;
+			border-bottom: 1px dashed @greyFont;
+			margin: 20px 0;
+			padding: 30px 0;
+
+			& > p {
+				& > span {
+					margin-right: 42px;
+
+					& > span {
+						color: @selectColor;
+					}
+				}
+			}
+
+			& > div {
+				display: flex;
+				margin-top: 30px;
+
+				& > div {
+					display: flex;
+					height: 32px;
+					align-items: center;
+					margin-right: 40px;
+
+					& > div {
+						margin-right: 5px;
+					}
+				}
+			}
+		}
+
+		//选择包装数量盒子
+		& > div:last-child {
+			& > div {
+				display: flex;
+				color: @greyFont;
+			}
+
+			//选择包装
+			& > :first-child {
+				div {
+					color: #333333;
+					height: 48px;
+					width: 68px;
+					border: 1px solid @greyFont;
+					margin: 0 10px;
+					padding: 0 20px;
+					font-size: 20px;
+					line-height: 48px;
+					text-align: center;
+					position: relative;
+					margin-bottom: 32px;
+					overflow: hidden;
+				}
+
+				.spec_selected:after {
+					content: " ";
+					background-image: url("../../assets/images/spec_selected.png");
+					background-repeat: no-repeat;
+					background-size: contain;
+					position: absolute;
+					right: 0;
+					width: 50px;
+					top: 0;
+					bottom: -1px;
+					background-position-x: right;
+					z-index: -1;
+				}
+			}
+
+			//选择数量
+			& > div:nth-child(2) {
+				line-height: 48px;
+
+				.input_box {
+					border: 1px solid @greyFont;
+					height: 48px;
+
+					span {
+						display: inline-block;
+						width: 30px;
+						background-color: #eee;
+						text-align: center;
+					}
+
+					input {
+						text-align: center;
+					}
+				}
+			}
+
+			& > .btn {
+				background: @themeColor;
+				width: 200px;
+				color: #fff;
+				line-height: 50px;
+				justify-content: center;
+				margin-top: 36px;
+			}
+		}
+	}
+}
+
+.bottom {
+	display: flex;
+
+	.bottom_left {
+		width: 285px;
+		margin-right: 15px;
+
+		& > div {
+			border: 1px solid @greyFont;
+
+			& > .hot {
+				line-height: 62px;
+				border-bottom: 5px solid @themeColor;
+				text-align: left;
+				padding: 0 30px;
+				font-size: 18px;
+				font-weight: bold;
+			}
+
+			.hot_item {
+				height: 59px;
+				border-top: 1px dashed @greyFont;
+				padding: 15px 15px 5px;
+				text-align: left;
+				display: flex;
+
+				//pic
+				div:first-child {
+					margin-right: 15px;
+				}
+
+				p:first-child {
+					height: 32px;
+					width: 175px;
+					line-height: 16px;
+					overflow: hidden;
+				}
+
+				p:last-child {
+					.selected;
+				}
+			}
+
+			.hot_item:first-child {
+				border: 0;
+			}
+		}
+	}
+
+	.bottom_right {
+		flex: 1;
+
+		//详情/评价盒子
+		.detail_box {
+			min-height: 500px;
+			margin-bottom: 78px;
+
+			.detail_item {
+				& > div {
+					/deep/ img {
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		.detail_box,
+		//商品详情与评价数量
+		.tab>span {
+			border: 1px solid @greyFont;
+		}
+
+		.tab > span:first-child {
+			border-right: 0;
+		}
+
+		.tab > span:last-child {
+			border-left: 0;
+		}
+
+		//商品详情与评价数量
+		.tab {
+			text-align: left;
+
+			& > span {
+				display: inline-block;
+				line-height: 50px;
+				width: 129px;
+				text-align: center;
+			}
+
+			& > .tab_selected {
+				background: @themeColor;
+				color: #fff;
+			}
+		}
+
+		//发表评论
+		.commit_box {
+			min-height: 100px;
+			padding: 30px 34px 30px 54px;
+
+			.commit_btn {
+				color: #fff;
+				background: #4eb209;
+				line-height: 48px;
+				height: 48px;
+				padding: 0 30px;
+			}
+
+			& > div:first-child {
+				display: flex;
+				justify-content: space-between;
+
+				& > div:first-child {
+					font-size: 48px;
+					color: @selectColor;
+				}
+			}
+
+			//发表评价
+			& > div:last-child {
+				.commit_table_box {
+					display: flex;
+
+					.starBox {
+						display: flex;
+
+						& > span > span {
+							display: inline-block;
+						}
+
+						& > span > span:before {
+							content: "*";
+							display: inline-block;
+							width: 16px;
+							color: @selectColor;
+						}
+
+						& > span > span:last-child:before {
+							content: "";
+							color: @selectColor;
+						}
+
+						& > div {
+							/deep/ div {
+								height: 30px;
+							}
+						}
+					}
+
+					.commit_table {
+						width: 598px;
+						border: 1px solid @greyFont;
+
+						// 两行
+						& > div {
+							display: flex;
+							border-bottom: 1px solid @greyFont;
+
+							.row_left {
+								width: 82px;
+								border-right: 1px solid @greyFont;
+								background: #efefef;
+								color: #999999;
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								flex-direction: column;
+							}
+
+							.row_right {
+								text-align: left;
+								display: flex;
+								align-items: center;
+
+								.contenteditable {
+									width: 485px;
+									height: 209px;
+									padding: 15px;
+									resize:none;
+								}
+							}
+
+							.contenteditable:focus {
+								appearance: none;
+								outline: 0;
+							}
+						}
+
+						& > div:first-child {
+							height: 239px;
+						}
+					}
+				}
+
+				.commit_title {
+					font-size: 24px;
+					text-align: left;
+					line-height: 50px;
+				}
+
+				.commit_submit {
+					margin-top: 30px;
+					display: flex;
+					justify-content: flex-end;
+					& > span {
+						line-height: 48px;
+						color: @selectColor;
+						margin-right: 50px;
+					}
+					& > div {
+						height: 48px;
+						width: 142px;
+					}
+				}
+			}
+		}
+
+		//评价盒子
+		.evaluation_box {
+			text-align: left;
+
+			& > div {
+				border-bottom: 1px solid @greyFont;
+				margin: 0 10px;
+			}
+
+			& > div:last-child {
+				border-bottom: 0;
+			}
+
+			.filter_box {
+				background: #eee;
+				border-bottom: 0;
+				margin: 0;
+				line-height: 40px;
+
+				& > span {
+					margin: 0 45px;
+				}
+			}
+		}
+	}
+}
+
+.selected {
+	color: @selectColor;
+}
+
+.bgGrey {
+	background: #999999;
+}

@@ -1,0 +1,34 @@
+/**变量 */
+@parentWidth: 948px;
+/**pic组件class */
+.pic {
+  width: inherit;
+  /deep/ img {
+    width: inherit;
+    height: auto;
+  }
+}
+
+.item_box {
+  width: (((@parentWidth - 30)/4 - 2));
+  border: 1px solid @greyFont;
+  height: 350px;
+  & > p {
+    margin: 10px;
+  }
+  & > p:first-of-type {
+    height: 38px;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  & > p:nth-of-type(2) {
+    line-height: 26px;
+    font-size: 20px;
+    color: @selectColor;
+  }
+  & > p:last-of-type {
+    color: @greyFont;
+  }
+}

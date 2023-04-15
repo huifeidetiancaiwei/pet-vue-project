@@ -1,0 +1,29 @@
+/**
+    prev上一页
+    pager页数
+    next下一页
+    count总页数
+*/
+.warpBox {
+    display: flex;
+    justify-content: center;
+    & > div,
+    & span {
+      border: 1px solid @greyFont;
+      line-height: 40px;
+      padding: 0 20px;
+      margin: 0 10px;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .count {
+      border: 0;
+    }
+  }
+  .current {
+    background: @themeColor;
+  }
+  
+  .hidden {
+    display: none;
+  }

@@ -1,0 +1,128 @@
+/** less 变量 */
+@top-row: 42px; /**顶部行高 */
+@bottom-row: 28px; /**底部行高 */
+@margin-top: 10px; /**热门搜索margin-top值 */
+@margin-bottom-row: (@bottom-row + @margin-top); /**底部行高 + 额外margin*/
+
+/**本页预设边框 */
+.borderPreset {
+  border: 2px @themeColor solid;
+}
+/**首行高度 */
+.top-row {
+  line-height: @top-row;
+  height: @top-row;
+}
+/**高亮 */
+.highlight {
+  color: @selectColor;
+}
+
+.wrapBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px;
+}
+
+.logo {
+  height: inherit;
+}
+
+.search_box {
+  width: 466px;
+  /**搜索输入框 */
+  & > :first-child {
+    display: flex;
+    .borderPreset;
+    .top-row;
+    //搜索按钮
+    & > .search_btn {
+      background-color: @themeColor;
+      color: #fff;
+      width: 74px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    & > .search_btn::after {
+      content: "";
+      position: absolute;
+      top: -1px;
+      bottom: -1px;
+      left: -1px;
+      right: -1px;
+      border: 2px solid @themeColor;
+    }
+    & > input {
+      flex: 1;
+      text-indent: 1em;
+    }
+  }
+  /**搜索推荐/热门搜索 */
+  & > .search_hot {
+    margin-top: @margin-top;
+    text-align: start;
+    line-height: @bottom-row;
+    color: @greyFont;
+    /**文字后的分割线 */
+    & > span::after {
+      content: " ";
+      display: inline-block;
+      border-right: 1px solid;
+      height: 10px;
+      margin: 0 5px 0;
+      color: @greyFont;
+    }
+    & > :first-child::after,
+    & > :last-child::after {
+      content: " ";
+      display: inline-block;
+      border-right: none;
+    }
+  }
+}
+.shopping_cart {
+  .borderPreset;
+  .top-row;
+  display: flex;
+  justify-content: space-between;
+  width: 152px;
+  margin-bottom: @margin-bottom-row;
+  & > span {
+    flex: 1;
+    padding: 0 10px 0;
+  }
+  & > .img_box {
+    width: 48px;
+    background-color: @themeColor;
+    /deep/ img {
+      vertical-align: middle;
+      height: 32px;
+    }
+  }
+}
+
+.search_title {
+  font-size: 30px;
+  color: @greyFont;
+  transform: translateX(-150px);
+}
+
+.search_line {
+  background-image: url("../../assets/images/progress.png");
+  background-repeat: no-repeat;
+  height: 44px;
+  width: 390px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: @greyFont;
+  & > .themeColor {
+    color: @themeColor;
+  }
+}
+.hot_selected {
+  color: @selectColor;
+}

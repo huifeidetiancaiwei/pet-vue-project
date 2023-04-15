@@ -1,0 +1,47 @@
+.pic-box {
+    height: 404px;
+  }
+  
+  .wrapBox {
+    position: relative;
+  }
+  
+  .right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 170px;
+    z-index: 9;
+    background: #fff;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    & > div > p {
+      font-size: 18px;
+    }
+    & > div > p:last-child {
+      font-size: 14px;
+      color: @selectColor;
+    }
+  }
+  
+  .my-swiper-box {
+    & > .my-pagination {
+      text-align: right;
+      right: 170px;
+      width: auto;
+    }
+  }
+  /deep/ .my-pagination-bullet {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    background-color: #fff;
+    opacity: 1;
+  }
+  /deep/ .swiper-pagination-bullet-active {
+    background-color: @themeColor;
+    color: #fff;
+  }

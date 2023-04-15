@@ -1,0 +1,87 @@
+/**变量 */
+@leftWidth: 170px; //左侧盒子宽度
+@lineHight: 66.5px; //每行高度
+
+/**传给contentBox的class */
+.c-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.wrapBox {
+  position: relative;
+}
+.left {
+  position: absolute;
+  width: @leftWidth;
+  height: inherit;
+  background: #fff;
+  & > div {
+    display: flex;
+    justify-content: space-evenly;
+    line-height: @lineHight;
+    border-bottom: 1px dotted #aba8a8;
+  }
+
+  & > div::after {
+    content: "";
+    position: absolute;
+    height: @lineHight;
+    z-index: 9;
+    border: 0;
+    transform: translateY(0);
+  }
+  & > .hoverRow::after {
+    left: 0;
+    right: 0;
+    border: 1px solid @themeColor;
+    border-right: 1px solid #fff;
+    transform: translateY(-1px);
+  }
+}
+
+.right {
+  position: absolute;
+  left: (@leftWidth - 1);
+  width: 625px;
+  border: solid 1px @themeColor;
+  background-color: #fff;
+  text-align: left;
+  line-height: 44px;
+  padding: 15px 0;
+  & > div {
+    margin: 0 18px;
+    padding: 0 30px;
+    border-top: 1px dashed @greyFont;
+    & > p {
+      border-bottom: 1px dashed @greyFont;
+      display: flex;
+      justify-content: space-between;
+      &>p{
+        display: inline-block;
+        padding-right: 10px;
+      }
+    }
+    & > p:last-child {
+      border: 0;
+    }
+    .sec_title {
+      display: flex;
+      font-size: 16px;
+      color: #666666;
+      line-height: 64px;
+      font-weight: bold;
+    }
+  }
+  & > div:first-child {
+    border: 0;
+  }
+}
+.hover {
+  z-index: 10;
+}
+html body .hover:hover {
+  color: @themeColor;
+}

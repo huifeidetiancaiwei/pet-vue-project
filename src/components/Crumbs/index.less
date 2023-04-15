@@ -1,0 +1,26 @@
+.wrapBox {
+    padding: 10px 0;
+  
+    & > div {
+      display: flex;
+      & > div {
+        display: flex;
+        align-items: center;
+        & > div {
+          flex: 1;
+          width: 128px;
+          line-height: 34px;
+          border: 1px solid @greyFont;
+          user-select: none;
+          cursor: pointer;
+        }
+      }
+      & > div:after {
+        content: ">";
+        padding: 0 20px;
+      }
+      & > div:last-child:after {
+        content: "";
+      }
+    }
+  }

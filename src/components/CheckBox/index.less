@@ -1,0 +1,48 @@
+/**变量 */
+@checkbox_width: 16px;
+
+.checkbox {
+  font-size: 1px;
+  width: @checkbox_width;
+  position: relative;
+  & > input[type="checkbox"] {
+    appearance: none;
+  }
+}
+
+.checkbox > input[type="checkbox"]:before {
+  content: " ";
+  cursor: pointer;
+  position: absolute;
+  width: @checkbox_width;
+  height: @checkbox_width;
+  top: 0;
+  left: 0;
+  background: #f8f8f8;
+  border: 1px solid #c1c1c1;
+  border-radius: 2px;
+}
+
+.checkbox > input[type="checkbox"]:checked:after {
+  content: " ";
+  position: absolute;
+  width: @checkbox_width / 2;
+  height: @checkbox_width / 5;
+  background: transparent;
+  top: @checkbox_width / 4;
+  left: @checkbox_width / 4;
+  border: 3px solid #333;
+  border-top: none;
+  border-right: none;
+
+  transform: rotate(-45deg);
+}
+
+.checkboxBlue > input[type="checkbox"]:checked:before {
+  background: #4199ff;
+  border-color: #4199ff;
+}
+
+.checkboxBlue > input[type="checkbox"]:checked:after {
+  border-color: #fff;
+}

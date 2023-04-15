@@ -1,0 +1,98 @@
+/**
+  less遍历
+  去除table的前4项的border-top
+*/
+//table下div的宽度
+@div_width: 175px;
+
+.loop(@n, @i: 1) when (@i <=@n ) {
+	&> :nth-child(@{i}) {
+		border-top: 1px solid @greyFont;
+	}
+
+	.loop(@n, (@i + 1));
+}
+
+.brand-box {
+	.boxSetting;
+
+	&>div:last-child,
+	&>div:first-child {
+		color: @greyFont;
+	}
+
+	//更多
+	&>div:last-child {
+		margin-right: 100px;
+	}
+
+	&>.tableShowMore {
+		display: flex;
+
+		&>div {
+			height     : 6px;
+			margin-left: 5px;
+			transform  : rotate(180deg) translateY(-6px);
+		}
+
+	}
+
+	&>.tableClose {
+		&>div {
+			transform: rotate(0) translateY(6px);
+		}
+
+	}
+
+	&>.hidden {
+		overflow: hidden;
+	}
+
+	&>.showMore {
+		overflow: auto;
+	}
+
+	//中间的表格
+	.table {
+		width    : 730px;
+		height   : 200px;
+		// border: 1px solid @greyFont;
+		display  : flex;
+		flex-wrap: wrap;
+
+		&>div {
+			box-sizing  : border-box;
+			width       : @div_width;
+			line-height : 50px;
+			height      : 50px;
+			border      : 1px solid @greyFont;
+			border-right: 0;
+			border-top  : 0;
+			user-select : none;
+			cursor      : pointer;
+		}
+
+		//遍历执行
+		.loop(4);
+
+		&>div:last-child {
+			padding-right: 1px;
+			width        : @div_width + 1;
+		}
+
+		&>div:nth-child(4n) {
+			width: @div_width;
+		}
+
+		//4的倍数
+		&>div:nth-child(4n),
+		&>div:last-child {
+			border-right: 1px solid @greyFont;
+		}
+	}
+}
+
+.brand_selected {
+	color      : @selectColor;
+	font-weight: bold;
+}

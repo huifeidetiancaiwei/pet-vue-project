@@ -1,0 +1,82 @@
+.content {
+    display: flex;
+    .right {
+      flex: 1;
+    }
+  }
+  //下方分页部分
+  .bottom_box {
+    margin: 0 40px 0;
+    text-align: left;
+  }
+  //商品盒子
+  .goods_box {
+    & > div {
+      display: inline-block;
+      margin-right: 10px;
+      margin-bottom: 20px;
+    }
+    & > div:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+  //筛选盒子
+  .filter_box {
+    .flexCenter {
+      align-items: center;
+      display: flex;
+    }
+    .flexCenter;
+    height: 58px;
+    border: 1px solid @greyFont;
+    margin: 20px 0;
+    justify-content: space-between;
+    & > .filter_left {
+      .flexCenter;
+      & > div {
+        border-right: 1px solid @greyFont;
+        position: relative;
+        width: 129px;
+        height: 58px;
+        .flexCenter;
+        justify-content: center;
+        user-select: none;
+        cursor: pointer;
+        //图片
+        & > div {
+          margin-left: 20px;
+          height: 6px;
+        }
+      }
+      .selected {
+        background: @themeColor;
+        color: #fff;
+        & > div {
+          filter: invert(100%) sepia(96%) saturate(16%) hue-rotate(284deg)
+            brightness(145%) contrast(147%);
+        }
+      }
+      .selected:after {
+        content: "";
+        position: absolute;
+        top: -1px;
+        bottom: -1px;
+        left: -1px;
+        right: -1px;
+        border: 2px solid @themeColor;
+      }
+    }
+    & > .filter_right {
+      display: flex;
+      line-height: 58px;
+      & > div {
+        margin-right: 25px;
+        span {
+          color: @selectColor;
+        }
+      }
+      .font_grey {
+        color: @greyFont;
+      }
+    }
+  }

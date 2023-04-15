@@ -1,0 +1,111 @@
+.floor_box {
+    margin-top: 45px;
+  }
+  .floor_top,
+  .floor_center {
+    display: flex;
+  }
+  .floor_top {
+    justify-content: space-between;
+    & > .floor_title,
+    & > .floor_title_right {
+      display: flex;
+      align-items: center;
+      height: 45px;
+    }
+    & > .floor_title {
+      & > div {
+        height: 32px;
+        filter: invert(63%) sepia(61%) saturate(364%) hue-rotate(112deg)
+          brightness(85%) contrast(93%);
+        margin: 0 20px 0 30px;
+      }
+    }
+  
+    & > .floor_title_right {
+      border: 1px solid @greyFont;
+      border-bottom: 0;
+      & > div {
+        position: relative;
+        line-height: 45px;
+        padding: 0 18px;
+        border-left: 1px solid @greyFont;
+      }
+      & > div:first-child {
+        border-left: 0;
+      }
+      & > div:after {
+        content: " ";
+        position: absolute;
+        top: -1px;
+        bottom: -1px;
+        left: -1px;
+        right: -1px;
+        border: 1px solid @themeColor;
+        border-top: 5px solid @themeColor;
+        border-bottom: 1px solid #fff;
+        z-index: 9;
+        display: none;
+      }
+      & > .hover:after {
+        display: block;
+      }
+    }
+  }
+  
+  .floor_left {
+    flex-shrink: 0;
+    width: 310px;
+    height: 682px;
+    position: relative;
+    & > div:first-child {
+      width: 100%;
+      padding-top: 50px;
+      /deep/img {
+        width: inherit;
+        height: auto;
+      }
+    }
+  }
+  .floor_hot {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.4);
+    bottom: 0;
+    //最热hot
+    .hot_title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 0 20px 0;
+      & > div {
+        display: inline-block;
+        height: 22px;
+      }
+    }
+    & > div {
+      padding: 20px 0 10px;
+    }
+    & > span {
+      display: inline-block;
+      background-color: #fff;
+      border-radius: 10px;
+      line-height: 22px;
+      margin: 0 3px 26px 0;
+      width: 90px;
+    }
+  }
+  .floor_right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    border-top: 1px solid @themeColor;
+    & > div {
+      margin-left: 30px;
+    }
+  }
+  .floor_bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+  }

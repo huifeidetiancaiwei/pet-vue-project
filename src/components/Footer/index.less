@@ -1,0 +1,37 @@
+.bg {
+    background-color: #f5f5f5;
+    margin-top: 70px;
+  }
+  .footer_slogn,
+  .siteMap,
+  .copyRight {
+    display: flex;
+    justify-content: space-around;
+  }
+  .footer_slogn {
+    height: 132px;
+    border-bottom: 1px #aba8a8 dashed;
+    font-weight: bold;
+    & > div {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      /deep/img {
+        width: inherit;
+        height: auto;
+      }
+    }
+  }
+  .siteMap {
+    padding: 44px 0;
+    text-align: left;
+    p {
+      line-height: 38px;
+    }
+  }
+  .copyRight {
+    line-height: 100px;
+  }
+  .fontBold {
+    font-weight: bold;
+  }
