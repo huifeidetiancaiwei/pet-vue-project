@@ -1,30 +1,10 @@
 <template>
   <ContentBox prop_class="c-box">
-    <div
-      @mouseout="
-        () => {
-          this.moustOut = true;
-        }
-      "
-      class="wrapBox"
-    >
+    <div @mouseout=" () => { this.moustOut = true; }  " class="wrapBox"  >
       <div class="left">
-        <div
-          v-for="(item, index) of treeList"
-          :key="item.id[0]"
-          @mouseover="leftHover(index)"
-          :class="[index === hoverIndex ? 'hoverRow' : '']"
-        >
-          <span
-            class="pointer hover"
-            @click="titleClick($store.state.classifyTreeList[index * 2])"
-            >{{ item.abbreviation[0] }}</span
-          >
-          <span
-            class="pointer hover"
-            @click="titleClick($store.state.classifyTreeList[index * 2 + 1])"
-            >{{ item.abbreviation[1] }}</span
-          >
+        <div v-for="(item, index) of treeList" :key="item.id[0]" @mouseover="leftHover(index)" :class="[index === hoverIndex ? 'hoverRow' : '']" >
+          <span class="pointer hover" @click="titleClick($store.state.classifyTreeList[index * 2])" >{{ item.abbreviation[0] }}</span >
+          <span class="pointer hover"  @click="titleClick($store.state.classifyTreeList[index * 2 + 1])" >{{ item.abbreviation[1] }}</span>
           <span>></span>
         </div>
       </div>
@@ -32,34 +12,18 @@
       <div
         class="right"
         v-show="!moustOut"
-        @mouseover="
-          () => {
-            this.moustOut = false;
-          }
-        "
+        @mouseover=" () => { this.moustOut = false; } "
       >
         <div v-for="(x, ind) in 2" :key="x">
           <!-- 二级分类标题 -->
-          <div
-            class="sec_title pointer hover"
-            @click="
-              titleClick($store.state.classifyTreeList[hoverIndex * 2 + ind])
-            "
-          >
+          <div class="sec_title pointer hover" @click="  titleClick($store.state.classifyTreeList[hoverIndex * 2 + ind])"  >
             <Pic :prop_src="x.icon"></Pic>
             {{ treeList[hoverIndex].name[ind] || "" }}
           </div>
           <!-- 二级分类 -->
-          <template
-            v-for="rowIndex in Math.ceil(
-              treeList[hoverIndex].secProductCategoryList[ind].length / 5
-            )"
-          >
+          <template v-for="rowIndex in Math.ceil( treeList[hoverIndex].secProductCategoryList[ind].length / 5  )"  >
             <p :key="rowIndex">
-              <template
-                v-for="(item, index) in treeList[hoverIndex]
-                  .secProductCategoryList[ind]"
-              >
+              <template v-for="(item, index) in treeList[hoverIndex] .secProductCategoryList[ind]"  >
                 <p
                   v-if="index >= (rowIndex - 1) * 5 && index < rowIndex * 5"
                   :key="item.secId || index + 'sec'"

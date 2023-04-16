@@ -23,9 +23,7 @@ export default {
   computed: {
     reqireSrc() {
       if (this.prop_src) {
-        return /^http|https/.test(this.prop_src)
-          ? this.prop_src
-          : require(`@/assets/images/${this.prop_src}`);
+        return /^http|https/.test(this.prop_src) ? this.prop_src : require(`@/assets/images/${this.prop_src}`);
       } else {
         return "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
       }
