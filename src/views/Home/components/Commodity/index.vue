@@ -1,6 +1,6 @@
 <template>
     <div class="wrapBox" v-if="item" @click="openItem">
-        <Pic :prop_src="item.defaultPicUrl"></Pic>
+        <Pic :prop_src="item.defaultPicUrl"/>
         <!-- 商品名称 -->
         <div>
             <p>{{ item.name }}</p>
@@ -11,6 +11,7 @@
 </template>
 <script>
 export default {
+    name: 'Commodity',
     props: {
         item: {
             default: ""

@@ -47,7 +47,7 @@ router.beforeEach((to, from, next) => {
       }
 
       getUserByToken().then(res => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           store.dispatch("userInfo", { ...res.data });
         }
       });
