@@ -37,7 +37,7 @@ module.exports = {
                 pathRewrite: {'^/api/ums': '/ums'}
             },
             '/api/pms': {
-                target: 'http://localhost:8082',
+                target: 'http://localhost:8011',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {'^/api/pms': '/pms'}

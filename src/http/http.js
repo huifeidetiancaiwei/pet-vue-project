@@ -1,7 +1,7 @@
 import axios from "axios";
 import qs from "qs";
 import store from "../store";
-import { getUserData } from "../assets/utils";
+import { getUserData } from '@/assets/utils';
 
 let timestamp = new Date().getTime();
 
@@ -43,7 +43,7 @@ instance.interceptors.response.use(
     }
     let res = response.data ? response.data : response;
     //返回401情况/也就是token失效情况
-    if (res.code == 401) {
+    if (res.code === 401) {
       store.dispatch("token", "");
       store.dispatch("userInfo", {});
     }
