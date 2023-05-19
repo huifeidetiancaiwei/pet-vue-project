@@ -28,7 +28,8 @@
           <div>
             <p>
               总价(不含运费):
-              <span>￥&nbsp;{{ summary.toFixed(2) }}</span>
+<!--              <span>￥&nbsp;{{ summary.toFixed(2) }}</span>-->
+              <span>￥{{summary}}</span>
             </p>
             <div
               class="pointer"

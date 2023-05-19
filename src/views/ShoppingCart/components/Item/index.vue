@@ -29,9 +29,13 @@
       <p>{{ prop_data.stockMsg || "有货" }}</p>
     </div>
     <p class="item_price">
-      ￥&nbsp;{{
-        prop_data.price.toFixed(2) ||
+<!--      ￥&nbsp;{{
+        prop_data.price.toFixed() ||
           (prop_data.unitPrice * prop_data.num).toFixed(2)
+      }}-->
+      ￥{{
+        prop_data.price ||
+        (prop_data.unitPrice * prop_data.num).toFixed(2)
       }}
     </p>
     <div class="pointer" @click="prop_del(list_index)">[删除]</div>
