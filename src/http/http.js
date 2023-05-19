@@ -38,12 +38,12 @@ instance.interceptors.response.use(
     // 对响应数据做点什么
     const { status } = response.data;
     // 判断状态码401或者其它条件
-    if (Object.is(status, 401)) {
+    if (Object.is(status, '401')) {
       // token过期后处理
     }
     let res = response.data ? response.data : response;
     //返回401情况/也就是token失效情况
-    if (res.code === 401) {
+    if (res.code === '401') {
       store.dispatch("token", "");
       store.dispatch("userInfo", {});
     }
