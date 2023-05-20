@@ -199,7 +199,7 @@ export default {
     //删除当前地址
     removeAddres(id) {
       receiverAddressRemove({ addressId: id }).then(res => {
-        if (res.code == 200) {
+        if (res.code === '200') {
           this.getEeceiverAddressList();
         }
       });
@@ -221,7 +221,7 @@ export default {
       preSubmit({ skuInfos: this.$route.params.skuInfos }).then(res => {
         if (!res.data) return;
         this.preSubmitData = { ...res.data, code: res.code };
-        if (!this.pcdListData.length) {
+        if (!this.pcdListData) {
           pcdList.call(this).then(res => {
             this.$store.dispatch("pcdList", res.data);
           });
@@ -229,7 +229,7 @@ export default {
       });
     },
     //新增修改地址弹窗
-    showAddresHandler(id = "", item) {
+    showAddressHandler(id = "", item) {
       this.addresId = id;
       this.prop_data = item;
       this.showAddres = true;
