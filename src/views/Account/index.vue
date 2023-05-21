@@ -9,7 +9,7 @@
         <div>
           <div class="row_title">
             <div>收货人信息</div>
-            <div class="pointer" @click="showAddresHandler('')">
+            <div class="pointer" @click="showAddressHandler('')">
               <Pic prop_src="account_plus.png"></Pic>新增收货地址
             </div>
           </div>
@@ -27,7 +27,7 @@
                     ? item.id === selectAddres
                     : item.defaultStatus !== selectAddres) && 'sleect_checked'
                 "
-                @click="clickAddres(item.id)"
+                @click="clickAddress(item.id)"
               >
                 {{ item.userName }}
               </div>
@@ -43,10 +43,10 @@
                 >
               </p>
               <div class="address_btn">
-                <div class="pointer" @click="showAddresHandler(item.id, item)">
+                <div class="pointer" @click="showAddressHandler(item.id, item)">
                   编辑
                 </div>
-                <div class="pointer" @click="removeAddres(item.id)">删除</div>
+                <div class="pointer" @click="removeAddress(item.id)">删除</div>
               </div>
             </div>
           </template>
@@ -184,7 +184,7 @@ export default {
       preSubmitData: {}, //商品,
       addresId: "", //编辑地址所用地址id
       selectAddres: 0, //选中的地址
-      prop_data: null
+      prop_data: []
     };
   },
   created() {
@@ -193,11 +193,11 @@ export default {
   },
   methods: {
     //点击切换地址
-    clickAddres(id) {
+    clickAddress(id) {
       this.selectAddres = id;
     },
     //删除当前地址
-    removeAddres(id) {
+    removeAddress(id) {
       receiverAddressRemove({ addressId: id }).then(res => {
         if (res.code === '200') {
           this.getEeceiverAddressList();
@@ -221,7 +221,7 @@ export default {
       preSubmit({ skuInfos: this.$route.params.skuInfos }).then(res => {
         if (!res.data) return;
         this.preSubmitData = { ...res.data, code: res.code };
-        if (!this.pcdListData) {
+        if (!this.pcdListData||!this.pcdListData.length) {
           pcdList.call(this).then(res => {
             this.$store.dispatch("pcdList", res.data);
           });
@@ -262,7 +262,7 @@ export default {
           selectItem.detailAddress
       };
       orderAdd(obj).then(res => {
-        if (res.code == 200) {
+        if (res.code === '200') {
           this.$router.push("/payment/" + res.data.orderNo);
         }
       });
