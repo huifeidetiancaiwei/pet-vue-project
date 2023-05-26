@@ -18,14 +18,14 @@
             <div
               class="address_item"
               :key="item.id"
-              v-show="!index || showMore ? true : false"
+              v-show="!index || showMore"
             >
               <div
                 class="pointer select"
                 :class="
-                  (selectAddres
-                    ? item.id === selectAddres
-                    : item.defaultStatus !== selectAddres) && 'sleect_checked'
+                  (selectAddress
+                    ? item.id === selectAddress
+                    : item.defaultStatus !== selectAddress) && 'select_checked'
                 "
                 @click="clickAddress(item.id)"
               >
@@ -38,7 +38,7 @@
                   }}
                 </span>
                 <span>{{ item.phoneNumber }}</span>
-                <span class="defult_option" v-if="item.defaultStatus"
+                <span class="default_option" v-if="item.defaultStatus"
                   >默认地址</span
                 >
               </p>
@@ -64,7 +64,7 @@
           <div class="row_title">
             <div>付款方式</div>
           </div>
-          <div class="pointer sleect_checked">
+          <div class="pointer select_checked">
             在线支付
             <Pic prop_src="account_help.png"></Pic>
           </div>
@@ -135,11 +135,11 @@
     <Footer></Footer>
     <Popup v-if="showPop">
       <Address
-        v-if="showAddres"
-        :prop_id="addresId"
+        v-if="showAddress"
+        :prop_id="addressId"
         :prop_data="prop_data"
         :callBackFn="getEeceiverAddressList"
-        >{{ addresId }}</Address
+        >{{ addressId }}</Address
       >
     </Popup>
   </div>
@@ -179,11 +179,13 @@ export default {
   data() {
     return {
       showMore: false, //地址展开收起
-      showAddres: false, //地址弹窗
+      showAddress: false, //地址弹窗
       addressData: [], //地址
-      preSubmitData: {}, //商品,
-      addresId: "", //编辑地址所用地址id
-      selectAddres: 0, //选中的地址
+      preSubmitData: {
+        productList:[]
+      }, //商品,
+      addressId: "", //编辑地址所用地址id
+      selectAddress: 0, //选中的地址
       prop_data: []
     };
   },
@@ -194,7 +196,7 @@ export default {
   methods: {
     //点击切换地址
     clickAddress(id) {
-      this.selectAddres = id;
+      this.selectAddress = id;
     },
     //删除当前地址
     removeAddress(id) {
@@ -230,9 +232,9 @@ export default {
     },
     //新增修改地址弹窗
     showAddressHandler(id = "", item) {
-      this.addresId = id;
+      this.addressId = id;
       this.prop_data = item;
-      this.showAddres = true;
+      this.showAddress = true;
       this.$store.dispatch("showPop", true);
     },
     //地址展开显示
@@ -246,9 +248,9 @@ export default {
       // receiverPhone	字符串	收件人电话	是
       // receiverAddress	字符串	收件人地址	是
       let selectItem = this.addressData.filter(item => {
-        return !this.selectAddres
+        return !this.selectAddress
           ? item.defaultStatus === 1
-          : item.id === this.selectAddres;
+          : item.id === this.selectAddress;
       })[0];
 
       let obj = {
