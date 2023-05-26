@@ -138,7 +138,7 @@ export const queryOrderStatus = params =>
 
 //支付宝支付（同步请求）
 export const aliPay = params =>
-  location.replace(`/api/oms/pay/aliPay/pay?orderNo=${params.orderNo}`);
+  location.replace(`/api/oms/pay/aliPay/pay/${params.orderNo}`);
 // Instance.post(`/api/oms/pay/aliPay/${params.orderNo}`);
 
 /**文件上传 */
