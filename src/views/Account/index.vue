@@ -247,8 +247,8 @@ export default {
       // receiverAddress	字符串	收件人地址	是
       let selectItem = this.addressData.filter(item => {
         return !this.selectAddres
-          ? item.defaultStatus == 1
-          : item.id == this.selectAddres;
+          ? item.defaultStatus === 1
+          : item.id === this.selectAddres;
       })[0];
 
       let obj = {

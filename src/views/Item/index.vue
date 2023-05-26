@@ -462,13 +462,13 @@ export default {
         star: this.starValue,
         imgIds: this.fileListIds.join()
       }).then(res => {
-        if (res.code == 200) {
+        if (res.code === '200') {
           this.postCommitShow = false;
           this.commentFilter();
           this.resetCommit();
-        } else if (res.code == 401) {
+        } else if (res.code === '401') {
           this.$store.dispatch("showPop", true);
-        } else if (res.code == 21002) {
+        } else if (res.code === '21002') {
           this.tips(res.msg);
         } else {
           this.tips(res.msg);
@@ -492,9 +492,9 @@ export default {
         isPic: this.isPic, //	整型	方式：0:无图评价；1: 有图评价；null: 全部评价	否，不传时，查询全部
         ...this.pageOption
       }).then(res => {
-        if (res.code == 200) {
-          let { total, pages, pageNo, beginPos, list } = res.data;
-          this.pageOption = { total, pages, pageNo, beginPos };
+        if (res.code === 200) {
+          let { total, pages, pageNo, list } = res.data;
+          this.pageOption = { total, pages, pageNo };
           this.commentDataList = list || [];
         }
       });
@@ -513,10 +513,10 @@ export default {
         skuId: this.skuList[this.spec_select].id,
         num: this.buyNum
       }).then(res => {
-        if (res.code == 200) {
+        if (res.code === '200') {
           this.$store.dispatch("showPop", true);
           this.showPopAdd = true;
-        } else if (res.code == 401) {
+        } else if (res.code === '401') {
           //弹窗需登录的提示
           this.$store.dispatch("navBarShowPop", false);
           //显示弹窗

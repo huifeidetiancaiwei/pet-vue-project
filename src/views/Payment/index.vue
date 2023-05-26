@@ -45,7 +45,7 @@
           </div>
           <div class="row_qrCode_box" v-if="qrCode">
             <div>
-              <p>请打开微信</p>
+              <p>请打开支付宝/微信</p>
               <p>扫描右侧二维码</p>
             </div>
             <div>
@@ -92,7 +92,7 @@ export default {
     //获取二维码
     qrCodeUrl() {
       wechatCodeUrl({ orderNo: this.$route.params.orderNo }).then(res => {
-        if (res.code == 200) {
+        if (res.code === '200') {
           this.qrCode = res.data.codeUrl;
           this.polling();
         }
