@@ -492,7 +492,7 @@ export default {
         isPic: this.isPic, //	整型	方式：0:无图评价；1: 有图评价；null: 全部评价	否，不传时，查询全部
         ...this.pageOption
       }).then(res => {
-        if (res.code === 200) {
+        if (res.code === '200') {
           let { total, pages, pageNo, list } = res.data;
           this.pageOption = { total, pages, pageNo };
           this.commentDataList = list || [];
