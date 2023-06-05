@@ -143,4 +143,4 @@ export const aliPay = params =>
 
 /**文件上传 */
 export const uploadFile = params =>
-  Instance.postImg("/api/files/uploadFile", params);
+  Instance.postImg("/api/pms/files/uploadFile", params);
