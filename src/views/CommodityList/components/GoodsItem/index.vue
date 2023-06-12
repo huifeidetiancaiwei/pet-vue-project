@@ -21,10 +21,11 @@ export default {
   },
   methods: {
     toDetail() {
-      let routeUrl = this.$router.resolve({
-        path: "/item/" + this.item.id
-      });
-      window.open(routeUrl.href, "_blank");
+      this.$router.push('/item/' + this.item.id)
+      //let routeUrl = this.$router.resolve({
+      //  path: "/item/" + this.item.id
+      //});
+      //window.open(routeUrl.href, "_blank");
     }
   }
 };
