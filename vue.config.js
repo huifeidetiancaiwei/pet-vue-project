@@ -29,6 +29,10 @@ module.exports = {
     }
   },
   devServer: {
+    port: 80,
+    allowedHosts:[
+      "www.csktedu.com"
+    ],
     proxy: {
       '/api': {
         target: 'http://localhost:9001',
