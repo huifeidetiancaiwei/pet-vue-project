@@ -154,7 +154,6 @@ export default new Vuex.Store({
             //微信登录成功后，将token存入vuex,同时根据token获取用户信息
             context.dispatch('token', data.token)
             getUserByToken().then(res => {
-              console.log(res)
               if (res.data) {
                 context.dispatch('userInfo', {...res.data})
               }
