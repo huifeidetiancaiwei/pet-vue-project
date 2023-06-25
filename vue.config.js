@@ -41,25 +41,5 @@ module.exports = {
         pathRewrite: {'^/api': '/'}
       }
     }
-    /*proxy: {
-        '/api/ums': {
-            target: 'http://localhost:8081',
-            ws: true,
-            changeOrigin: true,
-            pathRewrite: {'^/api/ums': '/ums'}
-        },
-        '/api/pms': {
-            target: 'http://localhost:8011',
-            ws: true,
-            changeOrigin: true,
-            pathRewrite: {'^/api/pms': '/pms'}
-        },
-        '/api/oms': {
-            target: 'http://localhost:8083',
-            ws: true,
-            changeOrigin: true,
-            pathRewrite: {'^/api/oms': '/oms'}
-        }
-    }*/
   }
 }
