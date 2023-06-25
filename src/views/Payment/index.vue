@@ -94,9 +94,7 @@ export default {
       wechatCodeUrl({ orderNo: this.$route.params.orderNo }).then(res => {
         if (res.code === '200') {
           this.qrCode = res.data.codeUrl;
-          setTimeout(()=>{
-            this.polling();
-          },5000)
+          this.polling();
         }
       });
     },
