@@ -50,10 +50,18 @@ export default {
             if (!val) {
                 this.$store.dispatch("userInfo", {});
             }
+        },
+        // todo 当userinfo不为空时获取购物车信息
+        userInfo: function (val) {
+          if (!val) {
+            cartCount.call(this)
+          }
         }
     },
     created() {
+      if (this.token) {
         cartCount.call(this);
+      }
     },
     methods: {
         toCart() {

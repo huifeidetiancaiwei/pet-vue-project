@@ -44,6 +44,8 @@ instance.interceptors.response.use(
     let res = response.data ? response.data : response;
     //返回401情况/也就是token失效情况
     if (res.code === '401') {
+      //如果请求响应的状态码为401,则弹出登录框
+      store.dispatch('showPop', true)
       store.dispatch("token", "");
       store.dispatch("userInfo", {});
     }

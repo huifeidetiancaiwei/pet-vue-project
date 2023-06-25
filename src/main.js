@@ -58,13 +58,13 @@ router.beforeEach((to, from, next) => {
         nextObj = to
         
         delete nextObj.query.token
+        //当请求路径为首页时,并且请求参数中token不为空时,则获取用户信息
+        getUserByToken().then(res => {
+          if (res.code === '200') {
+            store.dispatch('userInfo', {...res.data})
+          }
+        })
       }
-      
-      getUserByToken().then(res => {
-        if (res.code === '200') {
-          store.dispatch('userInfo', {...res.data})
-        }
-      })
     }
   }
   next(nextObj)
