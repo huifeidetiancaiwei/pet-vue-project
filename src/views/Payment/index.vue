@@ -89,7 +89,7 @@ export default {
     aliPayHandler() {
       aliPay({ orderNo: this.$route.params.orderNo });
     },
-    //获取二维码
+    //获取微信支付二维码
     qrCodeUrl() {
       wechatCodeUrl({ orderNo: this.$route.params.orderNo }).then(res => {
         if (res.code === '200') {

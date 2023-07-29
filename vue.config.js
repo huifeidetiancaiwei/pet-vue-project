@@ -30,6 +30,7 @@ module.exports = {
   },
   devServer: {
     port: 80,
+    //允许通过指定的域名进行访问，主要是用于微信登录后的回调
     allowedHosts:[
       "www.csktedu.com"
     ],
