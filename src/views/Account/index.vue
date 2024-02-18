@@ -243,6 +243,11 @@ export default {
     },
     //结算按钮
     creatOrder() {
+      // 当点击结算按钮时，判断地址列表是否为空，如果为空则弹出对话框
+      if (this.addressData.length < 1) {
+        this.$toast("收货人地址不能为空")
+      }
+
       // skuInfos	数组	商品sku信息数组	是
       // receiverName	字符串	收件人名称	是
       // receiverPhone	字符串	收件人电话	是
