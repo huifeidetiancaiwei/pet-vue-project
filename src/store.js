@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
-import {getUserByToken,  weChatCallBack} from '@/http'
+import {cartCount, getUserByToken, weChatCallBack} from '@/http'
 
 Vue.use(Vuex)
 
@@ -158,6 +158,11 @@ export default new Vuex.Store({
                 context.dispatch('userInfo', {...res.data})
               }
             })
+          //  同步隐藏登录对话框
+            context.dispatch('navBarShowPop',false)
+            context.dispatch('showPop',false)
+          //  获取购物车数量
+            cartCount.call(this)
           }
           //清空vuex中的wxCode
           context.commit('wxCode', '')
