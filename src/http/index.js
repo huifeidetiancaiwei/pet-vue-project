@@ -128,6 +128,15 @@ export const preSubmit = params =>
 export const orderDetail = params =>
   Instance.get(`/api/oms/order/detail/${params.orderNo}`)
 
+//查询所有订单
+export const searchAllOrder=(pageNo,pageSize,data)=>{
+  return Instance({
+    url:`/api/oms/order/searchAllOrder/${pageNo}/${pageSize}`,
+    method:'post',
+    data:data
+  })
+}
+
 /**支付 */
 //生成微信支付二维码
 export const wechatCodeUrl = params =>
@@ -136,6 +145,9 @@ export const wechatCodeUrl = params =>
 //微信支付状态轮询接口
 export const queryOrderStatus = params =>
   Instance.get(`/api/oms/pay/wechat/queryOrderStatus/${params.orderNo}`)
+//退款
+export const ReFunds = params =>
+    Instance.post(`/api/oms/pay/wechat/ReFunds/${params.orderNo}/${params.reason}`)
 
 //支付宝支付（同步请求）
 export const aliPay = params =>
