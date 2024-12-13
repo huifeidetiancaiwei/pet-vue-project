@@ -10,8 +10,11 @@ import Login from '@/components/Login'
 import Toast from '@/components/Toast'
 import {getUserByToken} from '@/http'
 import qs from 'qs'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.config.productionTip = false
+Vue.use(ElementUI)
 router.beforeEach((to, from, next) => {
   let url = window.location.href
   //获取到微信登录成功后的回调参数
