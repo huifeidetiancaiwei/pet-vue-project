@@ -4,6 +4,7 @@ import Home from "./views/Home";
 import CommodityList from "./views/CommodityList";
 import Item from "./views/Item";
 import ShoppingCart from "./views/ShoppingCart";
+import ShoppingOrder from './views/ShoppingOrder'
 import Account from "./views/Account";
 import Payment from "./views/Payment";
 import Result from "./views/Result";
@@ -33,6 +34,11 @@ export default new Router({
       path: "/shoppingcart",
       name: "ShoppingCart",
       component: ShoppingCart
+    },
+    {
+      path: "/shoppingorder",
+      name: "ShoppingOrder",
+      component: ShoppingOrder
     },
     {
       path: "/account",

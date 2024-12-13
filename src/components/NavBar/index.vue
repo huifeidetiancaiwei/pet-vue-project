@@ -23,7 +23,22 @@
 				<span @click="toCart">
                   <Pic prop_class="pic" prop_src="shopping-car.png"/>购物车( {{ userInfo.cartCount || 0 }} )
                 </span>
-				<span> <Pic prop_class="pic" prop_src="mine.png"/>我的爱宠 </span>
+<!--				<span> <Pic prop_class="pic" prop_src="mine.png"/>我的爱宠 </span>-->
+        <span>
+					<Pic prop_class="pic" prop_src="mine.png" />
+					<el-dropdown @command="handleCommand">
+						<span class="el-dropdown-link">
+							我的爱宠<i class="el-icon-arrow-down el-icon--right"></i>
+						</span>
+						<el-dropdown-menu slot="dropdown">
+							<el-dropdown-item command="/shoppingorder">我的订单</el-dropdown-item>
+							<el-dropdown-item command="b" disabled>退换货记录</el-dropdown-item>
+							<el-dropdown-item command="c" disabled>我的优惠券</el-dropdown-item>
+							<el-dropdown-item command="d" disabled>我的余额</el-dropdown-item>
+							<el-dropdown-item command="e" disabled>VIP俱乐部</el-dropdown-item>
+						</el-dropdown-menu>
+					</el-dropdown>
+				</span>
 				<span> <Pic prop_class="pic" prop_src="collect.png"/>收藏 </span>
 				<span> <Pic prop_class="pic" prop_src="phone.png"/>手机版 </span>
 				<span class="select">问题反馈</span>
@@ -73,6 +88,15 @@ export default {
 				this.$router.push('/shoppingcart')
 			}
 		},
+    handleCommand(command) {
+      if (!this.$store.state.token) {
+        //弹窗需登录的提示
+        this.$store.dispatch('navBarShowPop', false)
+        this.$store.dispatch('showPop', true)
+      } else {
+        this.$router.push(command)
+      }
+    },
 		toHome() {
 			this.$router.push('/')
 		},
