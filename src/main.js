@@ -10,8 +10,12 @@ import Login from '@/components/Login'
 import Toast from '@/components/Toast'
 import {getUserByToken} from '@/http'
 import qs from 'qs'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
 // 禁用生产环境的提示
 Vue.config.productionTip = false
+Vue.use(ElementUI)
 // 前置路由守卫，在每一次页面跳转之前执行
 router.beforeEach((to, from, next) => {
   let url = window.location.href
@@ -75,7 +79,6 @@ Vue.component('ContentBox', ContentBox)
 Vue.component('Pic', Pic)
 Vue.component('Popup', Popup)
 Vue.component('Login', Login)
-
 Vue.prototype.$toast = Toast
 
 new Vue({
