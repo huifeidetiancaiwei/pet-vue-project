@@ -56,6 +56,7 @@ export default {
             newTreeList: null
         };
     },
+    // 生命周期函数，在页面渲染之前执行
     created() {
         categoryList.call(this, "").then(res => {
             if (!res.data) return;

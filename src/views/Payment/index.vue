@@ -21,7 +21,7 @@
             <p>
               近期网络诈骗案件频繁发生，但小宠打死都不会
               <span class="selectedColor"
-                >因订单问题向您发送任何链接或获取验证码</span
+              >因订单问题向您发送任何链接或获取验证码</span
               >，
             </p>
             <p>
@@ -37,15 +37,32 @@
           </div>
           <div class="row_btn_box" v-if="!qrCode">
             <div @click="aliPayHandler">
-              <Pic prop_src="zhifubao_icon.jpg"></Pic>支付宝支付
+              <Pic prop_src="zhifubao_icon.jpg"></Pic>
+              支付宝支付
             </div>
             <div @click="qrCodeUrl">
-              <Pic prop_src="weixin_icon.jpg"></Pic>微信支付
+              <Pic prop_src="weixin_icon.jpg"></Pic>
+              微信支付
+            </div>
+          </div>
+          <div class="row_qrCode_box" v-if="aliPayPage">
+            <div>
+              <p>请打开支付宝</p>
+              <p>扫描右侧二维码</p>
+            </div>
+            <div>
+              <!--              嵌套支付宝支付页面-->
+              <iframe :srcdoc="aliPayPage" 
+                      width="600"
+                      height="300"
+                      style="overflow: hidden">
+                
+              </iframe>
             </div>
           </div>
           <div class="row_qrCode_box" v-if="qrCode">
             <div>
-              <p>请打开支付宝/微信</p>
+              <p>请打开微信</p>
               <p>扫描右侧二维码</p>
             </div>
             <div>
@@ -64,8 +81,9 @@ import NavBar from "@/components/NavBar";
 import Search from "@/components/Search";
 import Footer from "@/components/Footer";
 
-import { orderDetail, queryOrderStatus, wechatCodeUrl, aliPay } from "@/http";
+import {orderDetail, queryOrderStatus, wechatCodeUrl, aliPay} from "@/http";
 import VueQr from "vue-qr";
+
 export default {
   components: {
     NavBar,
@@ -76,22 +94,32 @@ export default {
   data() {
     return {
       dataList: {},
-      qrCode: ""
+      qrCode: "",
+      // 支付宝返回的支付页面
+      aliPayPage: ""
     };
   },
   created() {
-    orderDetail({ orderNo: this.$route.params.orderNo }).then(res => {
+    orderDetail({orderNo: this.$route.params.orderNo}).then(res => {
       this.dataList = res.data;
     });
   },
   methods: {
     //阿里支付请求
     aliPayHandler() {
-      aliPay({ orderNo: this.$route.params.orderNo });
+      aliPay({orderNo: this.$route.params.orderNo})
+          .then(res => {
+            if (res.code === '200') {
+              this.aliPayPage = res.data;
+              console.log(this.aliPayPage)
+              // 轮循订单状态
+              // this.polling();
+            }
+          })
     },
     //获取微信支付二维码
     qrCodeUrl() {
-      wechatCodeUrl({ orderNo: this.$route.params.orderNo }).then(res => {
+      wechatCodeUrl({orderNo: this.$route.params.orderNo}).then(res => {
         if (res.code === '200') {
           this.qrCode = res.data.codeUrl;
           this.polling();
@@ -100,14 +128,14 @@ export default {
     },
     //轮询
     polling() {
-      queryOrderStatus({ orderNo: this.$route.params.orderNo }).then(res => {
+      queryOrderStatus({orderNo: this.$route.params.orderNo}).then(res => {
         //支付状态 (支付状态：0->未支付；1->支付成功；2->支付失败)
         if (res.data.payStatus < 1) {
           setTimeout(() => this.polling(), 1000);
         } else {
           this.$router.push({
             name: "Result",
-            params: { payStatus: res.data.payStatus }
+            params: {payStatus: res.data.payStatus}
           });
         }
       });

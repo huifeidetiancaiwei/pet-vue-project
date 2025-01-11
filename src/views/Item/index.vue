@@ -5,8 +5,8 @@
     <div @mouseleave="leaveCb">
       <Navigation :hoverCb="hoverCb"></Navigation>
       <Classification
-        v-show="showClassification"
-        :treeList="newTreeList"
+          v-show="showClassification"
+          :treeList="newTreeList"
       ></Classification>
     </div>
     <Crumbs v-if="categories.length" :prop_data="categories"></Crumbs>
@@ -22,8 +22,8 @@
               <p>
                 {{
                   skuList[spec_select]
-                    ? skuList[spec_select].title || spu.name
-                    : ""
+                      ? skuList[spec_select].title || spu.name
+                      : ""
                 }}
               </p>
               <p>{{ spu.subTitle }}</p>
@@ -33,9 +33,9 @@
                   <span>￥</span>
                   {{
                     skuList[spec_select]
-                      ? skuList[spec_select].price.toFixed(2) ||
+                        ? skuList[spec_select].price.toFixed(2) ||
                         spu.defaultPrice
-                      : ""
+                        : ""
                   }}
                 </span>
               </p>
@@ -53,8 +53,8 @@
                   <span>{{ spu.sale }}</span>
                   {{
                     skuList[spec_select]
-                      ? skuList[spec_select].unit || "袋"
-                      : ""
+                        ? skuList[spec_select].unit || "袋"
+                        : ""
                   }}
                 </span>
                 <span>
@@ -63,19 +63,28 @@
                 </span>
               </p>
               <div>
-                <div><Pic prop_src="qualityassurance.png"></Pic>正品保证</div>
-                <div><Pic prop_src="freeshipping.png"></Pic>99远包邮</div>
-                <div><Pic prop_src="thirtydays.png"></Pic>30天退货</div>
+                <div>
+                  <Pic prop_src="qualityassurance.png"></Pic>
+                  正品保证
+                </div>
+                <div>
+                  <Pic prop_src="freeshipping.png"></Pic>
+                  99远包邮
+                </div>
+                <div>
+                  <Pic prop_src="thirtydays.png"></Pic>
+                  30天退货
+                </div>
               </div>
             </div>
             <div class>
               <div>
                 <span>规格：</span>
                 <div
-                  v-for="(item, index) in specFilter(spu.productSpecification)"
-                  :key="'spec' + index"
-                  @click="specsClick(skuList[spec_select].stock, index)"
-                  :class="[
+                    v-for="(item, index) in specFilter(spu.productSpecification)"
+                    :key="'spec' + index"
+                    @click="specsClick(skuList[spec_select].stock, index)"
+                    :class="[
                     index === spec_select ? 'spec_selected' : '',
                     skuList && skuList[index] && !skuList[index].stock
                       ? 'bgGrey pointer disabled'
@@ -89,20 +98,20 @@
                 <span>我要买：</span>
                 <div class="input_box">
                   <span class="pointer" @click="() => buyNum > 1 && buyNum--"
-                    >-</span
+                  >-</span
                   >
                   <input
-                    type="text"
-                    :value="buyNum"
-                    :min="1"
-                    @input="buyNumHandle"
+                      type="text"
+                      :value="buyNum"
+                      :min="1"
+                      @input="buyNumHandle"
                   />
                   <span
-                    class="pointer"
-                    @click="
+                      class="pointer"
+                      @click="
                       () => buyNum < skuList[spec_select].stock && buyNum++
                     "
-                    >+</span
+                  >+</span
                   >
                 </div>
                 <span>&nbsp;&nbsp;袋</span>
@@ -118,10 +127,10 @@
               <div class="hot">热门排行</div>
               <div>
                 <div
-                  v-for="(item, index) in hotList"
-                  :key="'hotList' + index"
-                  class="pointer hot_item"
-                  @click="
+                    v-for="(item, index) in hotList"
+                    :key="'hotList' + index"
+                    class="pointer hot_item"
+                    @click="
                     () => {
                       replaceItemHandler(item.id);
                     }
@@ -139,16 +148,16 @@
           <div class="bottom_right">
             <div class="tab">
               <span
-                class="pointer"
-                @click="() => (showDetail = true)"
-                :class="showDetail ? 'tab_selected' : ''"
-                >商品详情</span
+                  class="pointer"
+                  @click="() => (showDetail = true)"
+                  :class="showDetail ? 'tab_selected' : ''"
+              >商品详情</span
               >
               <span
-                class="pointer"
-                :class="!showDetail ? 'tab_selected' : ''"
-                @click="() => (showDetail = false)"
-                >评价({{ spu.commentAmount }})</span
+                  class="pointer"
+                  :class="!showDetail ? 'tab_selected' : ''"
+                  @click="() => (showDetail = false)"
+              >评价({{ spu.commentAmount }})</span
               >
             </div>
             <!-- 商品详情与评价盒子 -->
@@ -165,8 +174,8 @@
                     <div>
                       <p>{{ spu.commentTotalScore }}分</p>
                       <Star
-                        v-if="spu.commentTotalScore"
-                        :prop_num="spu.commentTotalScore"
+                          v-if="spu.commentTotalScore"
+                          :prop_num="spu.commentTotalScore"
                       ></Star>
                     </div>
                     <div class="pointer commit_btn" @click="showCommit">
@@ -185,10 +194,10 @@
                           </div>
                           <div class="row_right">
                             <textarea
-                              class="contenteditable"
-                              placeholder="可以在这里分享您的使用感受哟~~"
-                              v-model="textareaVal"
-                              maxlength="400"
+                                class="contenteditable"
+                                placeholder="可以在这里分享您的使用感受哟~~"
+                                v-model="textareaVal"
+                                maxlength="400"
                             ></textarea>
                           </div>
                         </div>
@@ -198,12 +207,12 @@
                           <div class="row_right">
                             <template v-for="(item, index) in fileList">
                               <PicUpload
-                                :key="index"
-                                :index="index"
-                                :filename="item"
-                                :setRes="setRes"
-                                :delSelf="delSelf"
-                                :uploadState="upLoadingHandler"
+                                  :key="index"
+                                  :index="index"
+                                  :filename="item"
+                                  :setRes="setRes"
+                                  :delSelf="delSelf"
+                                  :uploadState="upLoadingHandler"
                               ></PicUpload>
                             </template>
 
@@ -233,16 +242,16 @@
                 <div class="evaluation_box">
                   <div class="filter_box">
                     <span
-                      :class="!isPic ? 'selected' : ''"
-                      class="pointer"
-                      @click="commentFilter(null)"
-                      >全部评价</span
+                        :class="!isPic ? 'selected' : ''"
+                        class="pointer"
+                        @click="commentFilter(null)"
+                    >全部评价</span
                     >
                     <span
-                      :class="isPic ? 'selected' : ''"
-                      class="pointer"
-                      @click="commentFilter(1)"
-                      >有图评价</span
+                        :class="isPic ? 'selected' : ''"
+                        class="pointer"
+                        @click="commentFilter(1)"
+                    >有图评价</span
                     >
                   </div>
                   <template v-for="item in commentDataList">
@@ -254,9 +263,9 @@
               </div>
             </div>
             <Pagination
-              v-show="!showDetail"
-              :pageOption="pageOption"
-              :getSearch="getCommentList"
+                v-show="!showDetail"
+                :pageOption="pageOption"
+                :getSearch="getCommentList"
             ></Pagination>
           </div>
         </div>
@@ -292,6 +301,7 @@ import {
   commentList,
   postComment
 } from "@/http";
+
 export default {
   name: "home",
   computed: {
@@ -365,13 +375,13 @@ export default {
     },
     //进入页面请求
     createdAjax() {
-      productDetail({ spuId: this.replaceItem }).then(res => {
+      productDetail({spuId: this.replaceItem}).then(res => {
         this.categories = res.data.categories;
         this.skuList = res.data.skuList;
         this.spu = res.data.spu;
       });
       //热门商品
-      productSearch({ srot: 2 }).then(res => {
+      productSearch({srot: 2}).then(res => {
         this.hotList = res.data.list;
       });
       this.getCommentList();
@@ -493,8 +503,8 @@ export default {
         ...this.pageOption
       }).then(res => {
         if (res.code === '200') {
-          let { total, pages, pageNo, list } = res.data;
-          this.pageOption = { total, pages, pageNo };
+          let {total, pages, pageNo, list} = res.data;
+          this.pageOption = {total, pages, pageNo};
           this.commentDataList = list || [];
         }
       });
@@ -502,9 +512,9 @@ export default {
     //商品规格数据转换
     specFilter(value = "") {
       let arr = value
-        .slice(7, value.length - 2)
-        .replace(/"/g, "")
-        .split(",");
+          .slice(7, value.length - 2)
+          .replace(/"/g, "")
+          .split(",");
       return arr;
     },
     //加入购物车按钮
@@ -528,7 +538,7 @@ export default {
     toCart() {
       this.$router.push({
         name: "ShoppingCart",
-        params: { skuId: this.skuList[this.spec_select].id }
+        params: {skuId: this.skuList[this.spec_select].id}
       });
     },
     //购买数量控制

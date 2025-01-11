@@ -36,13 +36,14 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   function(response) {
     // 对响应数据做点什么
+    //   解构语法，会自动的取出对象中的与变量对应的属性值
     const { status } = response.data;
-    // 判断状态码401或者其它条件
+    // 判断状态码401或者其它条件，http
     if (Object.is(status, '401')) {
       // token过期后处理
     }
     let res = response.data ? response.data : response;
-    //返回401情况/也就是token失效情况
+    //返回401情况/也就是token失效情况，自定义封装的code
     if (res.code === '401') {
       //如果请求响应的状态码为401,则弹出登录框
       store.dispatch('showPop', true)

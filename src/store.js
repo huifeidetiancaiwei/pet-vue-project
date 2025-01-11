@@ -2,11 +2,13 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import {cartCount, getUserByToken, weChatCallBack} from '@/http'
+import router from "@/router";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   plugins: [createPersistedState()],
+  // 声明需要存储的内容
   state: {
     showNavBar: false, //控制nav bar 是否显示
     classifyTreeList: [], //保存原始商品类别信息
@@ -165,7 +167,8 @@ export default new Vuex.Store({
             cartCount.call(this)
           }
           //清空vuex中的wxCode
-          context.commit('wxCode', '')
+          // context.commit('wxCode', '')
+          router.push({path:"/"})
           resolve()
         }).catch(error => {
           reject(error)
