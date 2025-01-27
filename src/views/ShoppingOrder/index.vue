@@ -172,7 +172,7 @@ export default {
   data() {
     return {
       formInline: {
-        orderNo: '',
+          orderNo: '',
         payStatus: ''
       },
       tableData: [],
@@ -213,8 +213,12 @@ export default {
     },
     //渲染当前用户所有订单
     async searchAllOrderList() {
-      const res = await searchAllOrder(this.pageNo, this.pageSize, this.formInline);
-      this.tableData = res.data.records
+      const res = await searchAllOrder({
+        pageNo: this.pageNo,
+        pageSize: this.pageSize,
+        formInline: this.formInline
+      });
+      this.tableData = res.data.list
       this.total = res.data.total
     },
     //页面变化
@@ -240,14 +244,20 @@ export default {
     },
     //退款
     async ReFundsMoney() {
-      console.log(this.formInline.orderNo)
-      console.log(this.value)
-     const res= await ReFunds({orderNo: this.formInline.orderNo, reason: this.value})
+      const res = await ReFunds({orderNo: this.formInline.orderNo, reason: this.value})
       this.dialogVisible = false;
-      if (res.data.code === 200) {
-        this.searchAllOrderList()
+      if (res.code === "200") {
+        this.$message({
+          type: "info",
+          message: "退款成功！"
+        })
+      } else if (res.code === "500") {
+        this.$message({
+          type: "error",
+          message: "暂不支持支付宝退款！"
+        })
       }
-
+      this.searchAllOrderList()
     }
 
   }

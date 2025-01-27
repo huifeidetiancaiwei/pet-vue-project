@@ -117,6 +117,7 @@ export default {
     },
     //获取验证码
     getVerifyCode() {
+      if (this.timer)return;
       this.checkPhone()
       if (!this.phoneErr) {
         this.countDownStart()
