@@ -126,7 +126,9 @@
                   preSubmitData.payMoney && preSubmitData.payMoney.toFixed(2)
                 }}
               </span>
-              <div class="pointer" @click="creatOrder">提交订单</div>
+              <div class="pointer" @click="debouncedCreatOrder" :disabled="isSubmitting">
+                {{ isSubmitting ? '提交中...' : '提交订单' }}
+              </div>
             </div>
           </div>
         </div>
@@ -152,6 +154,9 @@ import Footer from "@/components/Footer";
 //本地组件
 import Address from "./components/Address";
 
+// eslint-disable-next-line no-unused-vars
+import _ from  'lodash'
+
 import {
   pcdList,
   receiverAddressList,
@@ -159,6 +164,7 @@ import {
   receiverAddressRemove,
   orderAdd
 } from "@/http";
+
 
 export default {
   components: {
@@ -186,7 +192,8 @@ export default {
       }, //商品,
       addressId: "", //编辑地址所用地址id
       selectAddress: 0, //选中的地址
-      prop_data: []
+      prop_data: [],
+      isSubmitting: false // 提交状态
     };
   },
   created() {
@@ -247,6 +254,8 @@ export default {
       if (this.addressData.length < 1) {
         this.$toast("收货人地址不能为空")
       }
+      // 禁用提交按钮
+      this.isSubmitting = true;
 
       // skuInfos	数组	商品sku信息数组	是
       // receiverName	字符串	收件人名称	是
@@ -272,8 +281,14 @@ export default {
         if (res.code === '200') {
           this.$router.push("/payment/" + res.data.orderNo);
         }
+      }).finally(() => {
+        // 无论请求成功或失败都启动按钮
+        this.isSubmitting = false;
       });
     }
+  },
+  mounted() {
+    this.debouncedCreatOrder = _.debounce(this.creatOrder, 500)
   }
 };
 </script>

@@ -127,7 +127,7 @@ export default {
       for (let x of this.checkboxHandler()) {
         if (x.checked) summary += this.checkList[x.value];
       }
-      this.summary = summary;
+      this.summary = parseFloat(summary.toFixed(2));
       return summary;
     },
     //处理checkbox,避免出现无法遍历的情况

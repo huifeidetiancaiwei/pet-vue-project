@@ -233,7 +233,7 @@ export default {
     //查看订单商品详情
     async onSearchProduct(row) {
       // console.log(row.orderNo);
-      this.$router.push("/payment/" + row.orderNo);
+      await this.$router.push("/payment/" + row.orderNo);
     },
     //开启弹窗
     DialogVisible(orderNo) {

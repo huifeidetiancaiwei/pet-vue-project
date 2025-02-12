@@ -39,7 +39,7 @@ export function validateRequire(value, callback) {
 }
 
 export function validatePhone(value, callback) {
-  let reg = /(13[0-9]|14[579]|15[0-35-9]|16[6]|17[0135678]|18[0-9]|19[89])[0-9]{8}$/g;
+  let reg = /(13[0-9]|14[579]|15[0-35-9]|16[6]|17[0135678]|18[0-9]|19[0-9])[0-9]{8}$/g;
   if (value === "") {
     callback("不能为空");
   } else if (!reg.test(value)) {
